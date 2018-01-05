@@ -1,0 +1,34 @@
+﻿@model ProductDetailsServiceModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+   
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-9 col-centered">
+        <div class="card mt-4">
+            <img class="card-img-top img-fluid" src="~/uploads/@Model.Image" alt="">
+            <div class="card-body">
+                <h3 class="card-title">@Model.Title</h3>
+                <h4>@Model.Price лв.</h4>
+                <p class="card-text">@Model.Description</p>
+                <hr />
+                <a class="text-warning" asp-area="Shop" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Добави в количката</a>
+
+             
+            </div>
+        </div>
+       
+    </div>
+    <!-- /.col-lg-9 -->
+</div>
+@if (User.IsInRole("Administrator"))
+{ 
+    <br/>
+    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@Model.Id" class="text-danger">Изтрий продукт</a>
+    <br/>
+    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@Model.Id" class="text-warning">Редактирай продукт</a>
+    <br />
+}

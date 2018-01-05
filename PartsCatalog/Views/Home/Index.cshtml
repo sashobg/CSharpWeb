@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<br />
+
+<h2 align="center">Последно добавени продукти</h2>
+<br />  
+<div class="row">
+    
+    <div class="col-lg-12">
+
+        <br />
+        <div class="row">
+            
+            @foreach (var product in Model)
+            {
+                
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="~/uploads/@product.Image" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a asp-area="Shop" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Title</a>
+                            </h4>
+                            <h5>@product.Price лв.</h5>
+                            <p class="card-text">@product.Description</p>
+                        </div>
+
+                        <div class="card-footer">
+
+                            <a class="text-success" asp-area="Shop" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id">Добави в количката</a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.col-lg-9 -->
+</div>
+<!-- /.row -->
+    

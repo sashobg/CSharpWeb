@@ -1,0 +1,98 @@
+﻿@using PartsCatalog.Areas.Shop.Models
+@using PartsCatalog.Services.Models
+@model IEnumerable<CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Количка";
+}
+<br />
+<center>
+<h2>Количка</h2>
+    </center>
+
+
+
+
+
+<div class="row">
+    @if (Model.Any())
+    {
+        <center>
+
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Продукт</th>
+                        <th>Количество</th>
+                        <th class="text-center">Цена</th>
+                        <th class="text-center">Общо</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="~/uploads/@product.Image" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a asp-area="Shop" asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.Title</a></h4>
+
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <strong>@product.Quantity</strong>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@product.Price лв.</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@(product.Quantity * product.Price) лв.</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <a class="btn btn-danger" asp-area="Shop" asp-controller="ShoppingCart" asp-action="RemoveItem" asp-route-id="@product.ProductId">Премахни</a>
+
+
+                            </td>
+                        </tr>
+
+                    }
+
+
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+                            <h3>Общо</h3></td>
+                        <td class="text-right">
+                            <h3><strong>@Model.Sum(i => i.Price * i.Quantity) лв.</strong>
+                            </h3></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+                             <a class="btn btn-default" asp-area="Shop" asp-controller="Products" asp-action="List">Назад</a>
+                            
+                        </td>
+                        <td>
+                            <a class="btn btn-success" asp-area="Shop" asp-controller="Orders" asp-action="FinishOrder"> Направи поръчка</a>
+
+                            <span class="glyphicon glyphicon-play"></span>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </center>
+    }
+        @if(!Model.Any())
+         { 
+          <p>Количката е празна</p> 
+        }
+</div>

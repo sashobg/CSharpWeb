@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PartsCatalog.Data.Models
+@using PartsCatalog.Views.Manage
+@inject SignInManager<User> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+
+    <a asp-action="Index">Profile</a>
+    <br/>
+    <a asp-action="ChangePassword">Password</a>
+<br/>
+
+    <a asp-action="TwoFactorAuthentication">Two-factor authentication</a>
