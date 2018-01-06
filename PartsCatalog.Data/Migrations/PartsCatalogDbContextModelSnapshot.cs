@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using PartsCatalog.Data;
+using PartsCatalog.Data.Models;
 using System;
 
 namespace PartsCatalog.Data.Migrations
@@ -136,6 +137,10 @@ namespace PartsCatalog.Data.Migrations
                     b.Property<string>("Address");
 
                     b.Property<string>("Comment");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("OrderStatus");
 
                     b.Property<decimal>("TotalPrice");
 

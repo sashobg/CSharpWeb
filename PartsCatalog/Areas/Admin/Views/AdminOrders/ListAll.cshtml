@@ -19,6 +19,8 @@
                             <tr>
                                 <th>Поръчка номер</th>
                                 <th>Потребител</th>
+                                <th>Дата</th>
+                                <th>Статус</th>
                                 <th class="text-center">За плащане</th>
                                 <th></th>
                             </tr>
@@ -37,6 +39,12 @@
                                     </td>
                                     <td class="col-sm-1 col-md-1" style="text-align: center">
                                         <strong>@order.User.UserName</strong>
+                                    </td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                        <strong>@order.Date</strong>
+                                    </td>
+                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                        <strong>@order.OrderStatus</strong>
                                     </td>
                                     <td class="col-sm-1 col-md-1" style="text-align: center">
                                         <strong>@order.TotalPrice</strong>

@@ -19,6 +19,10 @@ namespace PartsCatalog.Data.Models
 
         public string Comment { get; set; }
 
+        public DateTime Date { get; set; }
+
+        public OrderStatus OrderStatus { get; set; }
+
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
 
 

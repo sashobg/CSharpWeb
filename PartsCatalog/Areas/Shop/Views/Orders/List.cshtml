@@ -23,6 +23,8 @@
                     <thead>
                     <tr>
                         <th>Поръчка номер</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
                         <th class="text-center">За плащане</th>
                         <th></th>
                     </tr>
@@ -39,7 +41,12 @@
                                     </div>
                                 </div>
                             </td>
-
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <strong>@order.Date.ToShortDateString()</strong>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <strong>@order.OrderStatus</strong>
+                            </td>
                             <td class="col-sm-1 col-md-1" style="text-align: center">
                                 <strong>@order.TotalPrice</strong>
                             </td>

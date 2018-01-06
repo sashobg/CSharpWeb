@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace PartsCatalog.Services.Shop.Models.Order
 {
     using AutoMapper;
@@ -20,6 +22,10 @@ namespace PartsCatalog.Services.Shop.Models.Order
         public string Address { get; set; }
 
         public string Comment { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public OrderStatus OrderStatus { get; set; }
 
         public void ConfigureMapping(Profile profile)
         {

@@ -15,6 +15,8 @@ namespace PartsCatalog.Services.Shop
 
         bool IsItAuthor(int id, string userId);
 
+        bool UpdateStatus(int id, int status);
+
         bool Delete(int id);
     }
 }

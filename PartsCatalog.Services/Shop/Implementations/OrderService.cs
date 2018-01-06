@@ -49,7 +49,9 @@ namespace PartsCatalog.Services.Shop.Implementations
                 UserId = userId,
                 TotalPrice = itemsWithDetails.Sum(i => i.Price * i.Quantity),
                 Address = address,
-                Comment = comment
+                Comment = comment,
+                Date = DateTime.Now,
+                OrderStatus = OrderStatus.Pending
             };
 
             foreach (var item in itemsWithDetails)
@@ -79,7 +81,25 @@ namespace PartsCatalog.Services.Shop.Implementations
             return true;
         }
 
-       
+        public bool UpdateStatus(int id, int status)
+        {
+            var order = this.db.Orders.Find(id);
+
+            if (order == null)
+            {
+                return false;
+            }
+            OrderStatus newStatus;
+            if (!OrderStatus.TryParse(status.ToString(), out newStatus))
+            {
+                return false;
+            }
+            order.OrderStatus = newStatus;
+            this.db.Orders.Remove(order);
+            this.db.SaveChanges();
+            return true;
+        }
+
 
         public bool Delete(int id)
         {

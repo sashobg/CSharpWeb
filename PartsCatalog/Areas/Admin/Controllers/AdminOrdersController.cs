@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PartsCatalog.Areas.Admin.Models;
 using PartsCatalog.Areas.Shop.Models;
 using PartsCatalog.Data.Models;
+using PartsCatalog.Infrastructure.Filters;
 using PartsCatalog.Services.Shop;
 
 namespace PartsCatalog.Areas.Admin.Controllers
@@ -39,10 +42,30 @@ namespace PartsCatalog.Areas.Admin.Controllers
                 var order = this._orders.Details(id);
             if (order != null)
             {
+                ViewBag.EnumList = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
+                {
+                    Text = v.ToString(),
+                    Value = ((int)v).ToString()
+                });
                 return View(order);
             }
                 return NotFound();
             
+        }
+
+        [HttpPost]
+        [ValidateModelState]
+        public IActionResult UpdateStatus(AdminUpdateOrderStatusFormModel model)
+        {
+            var order = this._orders.Details(model.OrderId);
+            if (order == null)
+            {
+                return NotFound();
+            }
+          
+            this._orders.UpdateStatus(order.Id, model.Status);
+
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
     }

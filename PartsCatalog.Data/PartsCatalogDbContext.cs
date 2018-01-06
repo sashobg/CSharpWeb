@@ -18,6 +18,7 @@ namespace PartsCatalog.Data
 
         public DbSet<OrderItem> OrderItems { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,6 +33,11 @@ namespace PartsCatalog.Data
                 .HasMany(o => o.Items)
                 .WithOne(i => i.Order)
                 .HasForeignKey(i => i.OrderId);
+
+          
+                
+
+
 
             base.OnModelCreating(builder);
         }

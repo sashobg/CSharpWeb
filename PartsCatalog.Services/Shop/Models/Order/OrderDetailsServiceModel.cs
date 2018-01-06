@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PartsCatalog.Services.Shop.Models.Order
 {
@@ -20,6 +21,10 @@ namespace PartsCatalog.Services.Shop.Models.Order
         public string Address { get; set; }
 
         public string Comment { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public OrderStatus OrderStatus { get; set; }
 
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
 
