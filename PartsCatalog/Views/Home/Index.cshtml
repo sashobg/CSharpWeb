@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model HomeProductsAndCategoryViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -6,20 +6,31 @@
 
 <br />
 
-<h2 align="center">Последно добавени продукти</h2>
 <br />  
 <div class="row">
     
-    <div class="col-lg-12">
+   
+        <div class="col-md-3">
+            <center><h3>Категории </h3></center>
+            <br /> 
+            <div class="list-group">
+                @foreach (var category in Model.Categories)
+                {
+                    <a asp-area="Shop" asp-controller="Products" asp-action="List" asp-route-categoryId="@category.Id" class="list-group-item"><strong>@category.Name</strong></a>
 
-        <br />
+                }
+            </div>
+        </div>
+    <div class="col-lg-9">
+        <center><h3>Последно добавени продукти</h3></center>
+        <br /> 
         <div class="row">
-            
-            @foreach (var product in Model)
-            {
-                
 
-                <div class="col-lg-3 col-md-6">
+            @foreach (var product in Model.Products)
+            {
+
+
+                <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="~/uploads/@product.Image" alt=""></a>
                         <div class="card-body">

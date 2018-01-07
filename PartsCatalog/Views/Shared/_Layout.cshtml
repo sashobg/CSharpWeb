@@ -6,12 +6,14 @@
     <title>Shop</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/shop.css" />
+        <link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css" asp-append-version="true"/>
         <link rel="stylesheet" href="~/css/shop.css" asp-append-version="true" />
     </environment>
+  
 </head>
 <body>
 @*<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -54,7 +56,12 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-area="Shop" asp-controller="ShoppingCart" asp-action="Items" >Количка</a>
                 </li>
-                
+            @if (User.IsInRole("Administrator"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="List" >Категории</a>
+                </li>
+            }
             </ul>
             @await Html.PartialAsync("_LoginPartial")
         </div>

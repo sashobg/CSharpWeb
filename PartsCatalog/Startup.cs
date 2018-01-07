@@ -43,8 +43,11 @@ namespace PartsCatalog
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddSingleton<IShoppingCartManager, ShoppingCartManager>();
+            services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IOrderService, OrderService>();
+    
+
             services.AddSession();
     
 

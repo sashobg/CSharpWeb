@@ -16,10 +16,14 @@
         public string Image { get; set; }
 
         public string Description { get; set; }
+
+        public int CategoryId { get; set; }
+        public Data.Models.Category Category { get; set; }
         public void ConfigureMapping(Profile profile)
         {
-            profile.CreateMap<Product, ProductDetailsServiceModel>();
-
+            profile.CreateMap<Product, ProductDetailsServiceModel>()
+                .ForMember(p => p.Category, cfg => cfg
+                    .MapFrom(p => p.Category));
         }
     }
 }

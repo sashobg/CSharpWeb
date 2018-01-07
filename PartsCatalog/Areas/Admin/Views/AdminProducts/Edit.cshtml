@@ -32,7 +32,12 @@
                 <input asp-for="Image" class="form-control"/>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="Categories"></label>
+                <select asp-for="CategoryId" asp-items="@Model.Categories" > </select>
+                <span asp-validation-for="CategoryId" class="form-text text-danger"></span>
+               
+            </div>
             <button type="submit" class="btn btn-default">Редактирай</button>
         </form>
     </div>

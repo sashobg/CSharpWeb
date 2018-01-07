@@ -89,17 +89,14 @@ namespace PartsCatalog.Services.Shop.Implementations
             {
                 return false;
             }
-            OrderStatus newStatus;
-            if (!OrderStatus.TryParse(status.ToString(), out newStatus))
-            {
-                return false;
-            }
-            order.OrderStatus = newStatus;
-            this.db.Orders.Remove(order);
+           
+            order.OrderStatus = (OrderStatus)status;
+            this.db.Orders.Update(order);
             this.db.SaveChanges();
             return true;
         }
 
+       
 
         public bool Delete(int id)
         {

@@ -4,7 +4,32 @@
 }
 <br/>
 <center>
-    <h2>Продукти</h2>@if (User.IsInRole("Administrator"))
+    @if (@ViewBag.category != null)
+    {
+        <h2>Продукти от категория <strong>@ViewBag.category</strong>
+        </h2>
+    }
+    else
+    {
+        <h2>Продукти</h2>
+    }
+    <br/>
+    <div class="col-lg-6">
+      
+            <form action="" method="get">
+                
+           
+                <div class="input-group">
+            <input type="text" name="search" class="form-control" value="@ViewBag.query">
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-secondary" value="Търси">
+                
+            </span>
+            </form> 
+        </div>
+    </div>
+    <br/>
+    @if (User.IsInRole("Administrator"))
                      { 
     
                          <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Create" class="text-success">Добави продукт</a>

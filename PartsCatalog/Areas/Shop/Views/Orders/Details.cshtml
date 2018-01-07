@@ -14,61 +14,67 @@
 
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th>Продукт</th>
-                        <th>Количество</th>
-                        <th class="text-center">Цена</th>
-                        <th class="text-center">Общо</th>
-                    </tr>
+                <tr>
+                    <th>Продукт</th>
+                    <th>Количество</th>
+                    <th class="text-center">Цена</th>
+                    <th class="text-center">Общо</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var product in Model.Items)
-            {
-                        <tr>
-                            <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h4 class="media-heading">@product.Title</h4>
+                @foreach (var product in Model.Items)
+                {
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">@product.Title</h4>
 
-                                    </div>
                                 </div>
-                            </td>
+                            </div>
+                        </td>
 
-                            <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <strong>@product.Quantity</strong>
-                            </td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>@product.ProductPrice лв.</strong></td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>@(product.Quantity * product.ProductPrice) лв.</strong></td>
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                            <strong>@product.Quantity</strong>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@product.ProductPrice лв.</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>@(product.Quantity * product.ProductPrice) лв.</strong></td>
                             
-                        </tr>
-
-                    }
-
-
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        
-                        <td>
-                            <h3>Общо</h3>
-                        </td>
-                        <td class="text-right">
-                            <h3>
-                                <strong>@Model.TotalPrice лв.</strong>
-                            </h3>
-                        </td>
                     </tr>
-                    <tr>
-                        <td>Адрес за доставка: @Model.Address </td>
-                        <td>Коментар: @Model.Comment </td>
-                        <td>Дата на проръчка: @Model.Date </td>
-                        <td>Статус: @Model.OrderStatus </td>
+
+                }
+
+
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                        
+                    <td>
+                        <h3>Общо</h3>
+                    </td>
+                    <td class="text-right">
+                        <h3>
+                            <strong>@Model.TotalPrice лв.</strong>
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Адрес за доставка: @Model.Address </td>
+                    <td>Коментар: @Model.Comment </td>
+                    <td>Дата на проръчка: @Model.Date </td>
+                    <td>Статус: @Model.OrderStatus.ToString() </td>
 
                         
                         
-                    </tr>
+                </tr>
                 </tbody>
             </table>
+            @if (@Model.OrderStatus == OrderStatus.Pending)
+            {
+                <a asp-area="Shop" asp-controller="Orders" asp-action="Cancel" asp-route-id="@Model.Id" class="text-danger"><strong>Откажи поръчка</strong></a>
+
+            }
+
         </div>
     </center>
 </div>

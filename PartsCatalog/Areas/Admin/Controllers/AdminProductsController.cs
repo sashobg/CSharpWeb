@@ -2,6 +2,9 @@
 
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PartsCatalog.Controllers;
 using PartsCatalog.Services.Models;
 
@@ -22,20 +25,34 @@ namespace PartsCatalog.Areas.Admin.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly IProductService _products;
+        private readonly ICategoryService _categories;
         private IHostingEnvironment _hostingEnvironment;
         public AdminProductsController(
             UserManager<User> userManager,
             IProductService products,
-            IHostingEnvironment hostingEnvironment)
+            IHostingEnvironment hostingEnvironment,
+            ICategoryService categories)
         {
             this._userManager = userManager;
             this._products = products;
             this._hostingEnvironment = hostingEnvironment;
+            this._categories = categories;
         }
 
-        public IActionResult Create() => View();
-        
+        public IActionResult Create() => View(new AddProductFormModel()
+        {
+            Categories = this.GetSelectListCategories()
+        });
 
+        private List<SelectListItem> GetSelectListCategories()
+        {
+            return (from a in this._categories.AllCategories()
+                select new SelectListItem
+                {
+                    Text = a.Name,
+                    Value = a.Id.ToString()
+                }).ToList();
+        }
         [HttpPost]
         [ValidateModelState]
         public IActionResult Create(AddProductFormModel model)
@@ -61,7 +78,7 @@ namespace PartsCatalog.Areas.Admin.Controllers
 
 
 
-            var result = this._products.Create(model.Title, model.Price, model.Description, image);
+            var result = this._products.Create(model.Title, model.Price, model.Description, image, model.CategoryId);
             
             if (result == 0)
             {
@@ -81,6 +98,8 @@ namespace PartsCatalog.Areas.Admin.Controllers
               Description  = product.Description,
               Title = product.Title,
               Price = product.Price,
+               CategoryId =  product.CategoryId,
+               Categories = GetSelectListCategories()
                
             });
 
@@ -115,12 +134,12 @@ namespace PartsCatalog.Areas.Admin.Controllers
 
             if (image)
             {
-                var result = this._products.Update(model.Id, model.Title, model.Price, model.Description, uniqueFileName);
+                var result = this._products.Update(model.Id, model.Title, model.Price, model.Description, uniqueFileName, model.CategoryId);
                 this.DeleteOldImage(oldImagePath);
             }
             else
             {
-                var result = this._products.Update(model.Id, model.Title, model.Price, model.Description, oldImagePath);
+                var result = this._products.Update(model.Id, model.Title, model.Price, model.Description, oldImagePath, model.CategoryId);
 
             }
 

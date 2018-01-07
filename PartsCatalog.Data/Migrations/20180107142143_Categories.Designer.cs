@@ -12,9 +12,10 @@ using System;
 namespace PartsCatalog.Data.Migrations
 {
     [DbContext(typeof(PartsCatalogDbContext))]
-    partial class PartsCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180107142143_Categories")]
+    partial class Categories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +193,7 @@ namespace PartsCatalog.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CategoryId");
+                    b.Property<int?>("CategoryId");
 
                     b.Property<string>("Description");
 
@@ -325,8 +326,7 @@ namespace PartsCatalog.Data.Migrations
                 {
                     b.HasOne("PartsCatalog.Data.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
         }

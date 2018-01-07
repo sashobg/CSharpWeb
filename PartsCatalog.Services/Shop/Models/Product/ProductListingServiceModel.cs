@@ -1,12 +1,15 @@
 ﻿
+
+
+
 namespace PartsCatalog.Services.Shop.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using AutoMapper;
-    using PartsCatalog.Common.Mapping;
+
     using PartsCatalog.Data.Models;
+    using AutoMapper;
+    using Common.Mapping;
+   
+
 
     public class ProductListingServiceModel : IMapFrom<Product>, ICustomMapper
     {
@@ -20,10 +23,13 @@ namespace PartsCatalog.Services.Shop.Models
         public string Image { get; set; }
 
         public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public Data.Models.Category Category { get; set; }
         public void ConfigureMapping(Profile profile)
         {
-            profile.CreateMap<Product, ProductDetailsServiceModel>();
-
+            profile.CreateMap<Product, ProductListingServiceModel>()
+                .ForMember(p => p.Category , cfg => cfg
+                .MapFrom(p => p.Category));
         }
     }
 }

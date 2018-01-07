@@ -12,9 +12,10 @@ using System;
 namespace PartsCatalog.Data.Migrations
 {
     [DbContext(typeof(PartsCatalogDbContext))]
-    partial class PartsCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180105210712_AddOrderStatusAndDate")]
+    partial class AddOrderStatusAndDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,18 +130,6 @@ namespace PartsCatalog.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("PartsCatalog.Data.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("PartsCatalog.Data.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -192,8 +181,6 @@ namespace PartsCatalog.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CategoryId");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("Image");
@@ -204,8 +191,6 @@ namespace PartsCatalog.Data.Migrations
                         .IsRequired();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -318,14 +303,6 @@ namespace PartsCatalog.Data.Migrations
                     b.HasOne("PartsCatalog.Data.Models.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PartsCatalog.Data.Models.Product", b =>
-                {
-                    b.HasOne("PartsCatalog.Data.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

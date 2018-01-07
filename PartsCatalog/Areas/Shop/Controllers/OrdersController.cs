@@ -58,6 +58,8 @@ namespace PartsCatalog.Areas.Shop.Controllers
             return RedirectToAction("Items", nameof(ShoppingCart));
         }
 
+       
+
         [HttpPost]
         [ValidateModelState]
         [Authorize]
@@ -87,10 +89,38 @@ namespace PartsCatalog.Areas.Shop.Controllers
             if (result)
             {
                 var order = this.orders.Details(id);
+                
                 return View(order);
             }
 
             return NotFound();
+        }
+
+        [Authorize]
+        public IActionResult Cancel(int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            var result = this.orders.IsItAuthor(id, userId);
+            if (result)
+            {
+                var order = this.orders.Details(id);
+                if (order.OrderStatus == OrderStatus.Pending)
+                {
+                    this.orders.UpdateStatus(order.Id, (int) OrderStatus.Cancelled);
+                    TempData["Success"] = "Успешно отказахте поръчката.";
+                    return RedirectToAction("Items", nameof(ShoppingCart));
+
+                }
+                else
+                {
+                    TempData["Warning"] = "Поръчката не може да бъде отказана.";
+                    return RedirectToAction("Items", nameof(ShoppingCart));
+                }
+            }
+
+            TempData["Danger"] = "Няма такава поръчка.";
+            return RedirectToAction("Items", nameof(ShoppingCart));
         }
     }
 

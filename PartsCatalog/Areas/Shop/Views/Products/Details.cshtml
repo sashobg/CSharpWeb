@@ -12,8 +12,11 @@
             <img class="card-img-top img-fluid" src="~/uploads/@Model.Image" alt="">
             <div class="card-body">
                 <h3 class="card-title">@Model.Title</h3>
+                <p class="card-text ">Категория: <a asp-area="Shop" asp-controller="Products" asp-action="List" asp-route-categoryId="@Model.Category.Id"><strong>@Model.Category.Name</strong></a></p>
+                              
+                
                 <h4>@Model.Price лв.</h4>
-                <p class="card-text">@Model.Description</p>
+                <p class="card-text">Описание: @Model.Description</p>
                 <hr />
                 <a class="text-warning" asp-area="Shop" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Id">Добави в количката</a>
 

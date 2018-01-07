@@ -12,9 +12,10 @@ using System;
 namespace PartsCatalog.Data.Migrations
 {
     [DbContext(typeof(PartsCatalogDbContext))]
-    partial class PartsCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180107202507_AddCategories2")]
+    partial class AddCategories2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

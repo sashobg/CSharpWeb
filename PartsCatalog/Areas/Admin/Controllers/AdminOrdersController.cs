@@ -42,12 +42,12 @@ namespace PartsCatalog.Areas.Admin.Controllers
                 var order = this._orders.Details(id);
             if (order != null)
             {
-                ViewBag.EnumList = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
+                var EnumList = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
                 {
                     Text = v.ToString(),
                     Value = ((int)v).ToString()
-                });
-                return View(order);
+                }).ToList();
+                return View(new AdminOrderDetailsViewModel {Order = order, Status = EnumList, StatusId = (int)order.OrderStatus});
             }
                 return NotFound();
             
@@ -63,7 +63,7 @@ namespace PartsCatalog.Areas.Admin.Controllers
                 return NotFound();
             }
           
-            this._orders.UpdateStatus(order.Id, model.Status);
+            this._orders.UpdateStatus(order.Id, model.StatusId);
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }

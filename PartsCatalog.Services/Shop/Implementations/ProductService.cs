@@ -31,12 +31,26 @@ namespace PartsCatalog.Services.Shop.Implementations
 
 
 
-        public IEnumerable<ProductListingServiceModel> All(string searchText, int page = 1)
+        public IEnumerable<ProductListingServiceModel> All(int? categoryId,string searchText, int page = 1)
         {
             
             if (searchText == null)
                 searchText = string.Empty;
-            
+
+            if (categoryId != null)
+            {
+                return this.db
+                    .Products
+                    .Where(x=>x.CategoryId == categoryId)
+                    .Where(x => x.Title.ToLower()
+                        .Contains(searchText.ToLower()))
+                        
+                    .OrderBy(x => x.Title)
+                    .Skip((page - 1) * ShopProductsPageSize)
+                    .Take(ShopProductsPageSize)
+                    .ProjectTo<ProductListingServiceModel>()
+                    .ToList();
+            }
 
             return this.db
                 .Products
@@ -48,6 +62,17 @@ namespace PartsCatalog.Services.Shop.Implementations
                 .ProjectTo<ProductListingServiceModel>()
                 .ToList();
         }
+
+        public IEnumerable<ProductListingServiceModel> Recent()
+        {
+            return this.db
+                .Products
+                .OrderByDescending(x => x.Id)
+                .Take(6)
+                .ProjectTo<ProductListingServiceModel>()
+                .ToList();
+        }
+
         public int Total()
             =>  this.db.Products.Count();
 
@@ -57,14 +82,16 @@ namespace PartsCatalog.Services.Shop.Implementations
                 .ProjectTo<ProductDetailsServiceModel>()
                 .FirstOrDefault();
 
-        public int Create(string title, decimal price, string description, string image)
+        public int Create(string title, decimal price, string description, string image, int categoryId)
         {
             var product = new Product
             {
                 Description = description,
                 Price = price,
                 Title = title,
-                Image = image
+                Image = image,
+                CategoryId = categoryId
+                
             };
             this.db.Products.Add(product);
             this.db.SaveChanges();
@@ -74,7 +101,7 @@ namespace PartsCatalog.Services.Shop.Implementations
         public bool Exists(int id) => this.db.Products.Any(p => p.Id == id);
         
 
-        public bool Update(int id, string title, decimal price, string description, string image)
+        public bool Update(int id, string title, decimal price, string description, string image, int categoryId)
         {
             var product = db.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
@@ -87,7 +114,7 @@ namespace PartsCatalog.Services.Shop.Implementations
             product.Price = price;
             product.Description = description;
             product.Image = image;
-
+            product.CategoryId = categoryId;
             this.db.Products.Update(product);
             this.db.SaveChanges();
             return true;

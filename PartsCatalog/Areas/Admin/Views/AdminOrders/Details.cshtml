@@ -1,10 +1,10 @@
-﻿@model PartsCatalog.Services.Shop.Models.Order.OrderDetailsServiceModel
+﻿@model AdminOrderDetailsViewModel
 @{
     ViewData["Title"] = "Details";
 }
 <br />
 <center>
-    <h2>Поръчка номер: @Model.Id</h2>
+    <h2>Поръчка номер: @Model.Order.Id</h2>
     <a asp-area="Admin" asp-controller="AdminOrders" asp-action="ListAll" class="text-success">Всички поръчки</a>
 
 </center>
@@ -25,7 +25,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var product in Model.Items)
+                @foreach (var product in Model.Order.Items)
                 {
                     <tr>
                         <td class="col-sm-8 col-md-6">
@@ -59,16 +59,16 @@
                     </td>
                     <td class="text-right">
                         <h3>
-                            <strong>@Model.TotalPrice лв.</strong>
+                            <strong>@Model.Order.TotalPrice лв.</strong>
                         </h3>
                     </td>
                 </tr>
                 <tr>
-                    <td>Адрес за доставка: @Model.Address </td>
-                    <td>Коментар: @Model.Comment </td>
-                    <td>Потребител: @Model.User.UserName </td>
-                    <td>Дата на проръчка: @Model.Date </td>
-                    <td>Статус: @Model.OrderStatus </td>
+                    <td>Адрес за доставка: @Model.Order.Address </td>
+                    <td>Коментар: @Model.Order.Comment </td>
+                    <td>Потребител: @Model.Order.User.UserName </td>
+                    <td>Дата на проръчка: @Model.Order.Date </td>
+                    <td>Статус: @Model.Order.OrderStatus </td>
 
                 </tr>
                 </tbody>
@@ -76,13 +76,13 @@
             <form asp-controller="AdminOrders" asp-action="UpdateStatus">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="hidden" name="OrderId" value="@Model.Id" />
-                        <select name="Status">
-                            <option value="0">Чакаща</option>
-                            <option value="1">Изпратена</option>
-                            <option value="2">Завършена</option>
-                            <option value="3">Отказана</option>
-                        </select>
+                        <div class="form-group">
+                            <input type="hidden" name="OrderId" value="@Model.Order.Id" />
+                            <label asp-for="Status"></label>
+                            <select asp-for="StatusId" asp-items="@Model.Status"> </select>
+                            <span asp-validation-for="StatusId" class="form-text text-danger"></span>
+
+                        </div>
 </div>
                     <div class="col-md-4">
                         <button class="btn btn-sm btn-success" asp-action="UpdateStatus" asp-controller="AdminOrders">Промени</button>
