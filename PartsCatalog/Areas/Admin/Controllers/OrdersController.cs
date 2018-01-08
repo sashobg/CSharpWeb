@@ -62,14 +62,7 @@
 
             }
 
-            bool status = Enum.IsDefined(typeof(OrderStatus), model.StatusId);
-            if (status)
-            {
-                TempData.AddErrorMessage("Невалиден статус");
-
-                return RedirectToAction(nameof(ListAll));
-
-            }
+           
 
             this._orders.UpdateStatus(order.Id, model.StatusId);
             TempData.AddSuccessMessage("Успешно обновихте статуса на проръчката.");
