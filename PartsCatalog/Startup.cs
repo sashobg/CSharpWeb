@@ -68,6 +68,7 @@ namespace PartsCatalog
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+     
 
             app.UseStaticFiles();
 

@@ -53,7 +53,7 @@
                         <a asp-area="Shop" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Title</a>
                     </h4>
                     <h5>@product.Price лв.</h5>
-                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">@product.Description.Substring(0, 20)</p>
                 </div>
 
                 <div class="card-footer">

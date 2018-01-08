@@ -134,12 +134,15 @@ namespace PartsCatalog.Areas.Admin.Controllers
 
 
            string oldImagePath = this._products.Details(model.Id).Image;
-
+            if (oldImagePath != "default.jpg")
+            {
+                this.DeleteOldImage(oldImagePath);
+            }
 
             if (image)
             {
                 var result = this._products.Update(model.Id, model.Title, model.Price, model.Description, uniqueFileName, model.CategoryId);
-                this.DeleteOldImage(oldImagePath);
+              
             }
             else
             {
@@ -160,7 +163,11 @@ namespace PartsCatalog.Areas.Admin.Controllers
             var result = this._products.Delete(id);
             if (result)
             {
-                this.DeleteOldImage(oldImagePath);
+                if (oldImagePath != "default.jpg")
+                {
+                    this.DeleteOldImage(oldImagePath);
+                }
+
                 TempData.AddSuccessMessage("Успешно изтрит продукт.");
 
                 return RedirectToAction("Index", "Home", new { area = "" });
