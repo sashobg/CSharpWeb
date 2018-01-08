@@ -1,8 +1,7 @@
-﻿using System.Linq;
-
-namespace PartsCatalog.Services.Models
+﻿namespace PartsCatalog.Services.Shop.Models.Cart
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ShoppingCart
     {

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using PartsCatalog.Data.Models;
-using PartsCatalog.Services.Models;
-using PartsCatalog.Services.Shop.Models;
-using PartsCatalog.Services.Shop.Models.Cart;
-
-namespace PartsCatalog.Services.Shop
+﻿namespace PartsCatalog.Services.Shop
 {
+    using System.Collections.Generic;
+    using Data.Models;
+    using Models.Cart;
+    using Models.Product;
     public interface IProductService
     {
 

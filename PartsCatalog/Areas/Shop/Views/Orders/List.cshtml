@@ -1,4 +1,4 @@
-﻿@model PartsCatalog.Areas.Shop.Models.OrderListingViewModel
+﻿@model OrderListingViewModel
 @{
     ViewData["Title"] = "List";
 }
@@ -8,7 +8,7 @@
 @if (User.IsInRole("Administrator"))
 { 
     
-    <a asp-area="Admin" asp-controller="AdminOrders" asp-action="ListAll" class="text-success">Всички поръчки</a>
+    <a asp-area="Admin" asp-controller="Orders" asp-action="ListAll" class="text-success">Всички поръчки</a>
     
 }
 </center>

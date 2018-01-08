@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PartsCatalog.Services.Shop.Models;
-using PartsCatalog.Services.Shop.Models.Category;
-
-namespace PartsCatalog.Models
+﻿namespace PartsCatalog.Models
 {
+    using System.Collections.Generic;
+    using Services.Shop.Models.Category;
+    using Services.Shop.Models.Product;
+
     public class HomeProductsAndCategoryViewModel
     {
         public IEnumerable<ProductListingServiceModel> Products { get; set; }

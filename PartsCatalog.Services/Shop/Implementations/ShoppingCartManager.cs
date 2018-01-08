@@ -1,11 +1,8 @@
-﻿using PartsCatalog.Services.Models;
-
-namespace PartsCatalog.Services.Shop.Implementations
+﻿namespace PartsCatalog.Services.Shop.Implementations
 {
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
-    using Models;
+    using Models.Cart;
 
     public class ShoppingCartManager : IShoppingCartManager
     {

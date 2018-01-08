@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using PartsCatalog.Services.Models;
-using PartsCatalog.Services.Shop.Models;
-using PartsCatalog.Services.Shop.Models.Order;
-
-namespace PartsCatalog.Services.Shop
+﻿namespace PartsCatalog.Services.Shop
 {
+    using System.Collections.Generic;
+    using Models.Order;
+    using Models.Cart;
     public interface IOrderService
     {
         IEnumerable<OrderListingServiceModel> All(string searchText);

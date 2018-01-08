@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper.QueryableExtensions;
-using PartsCatalog.Data;
-using PartsCatalog.Data.Models;
-using PartsCatalog.Services.Models;
-using PartsCatalog.Services.Shop.Models;
-using PartsCatalog.Services.Shop.Models.Order;
-
-namespace PartsCatalog.Services.Shop.Implementations
+﻿namespace PartsCatalog.Services.Shop.Implementations
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using AutoMapper.QueryableExtensions;
+    using Data;
+    using Data.Models;
+    using Models.Cart;
+  
+    using Models.Order;
     public class OrderService : IOrderService
     {
         private readonly IProductService _products;

@@ -1,4 +1,4 @@
-﻿@model PartsCatalog.Areas.Shop.Models.ProductsListingViewModel
+﻿@model ProductsListingViewModel
 @{
     ViewData["Title"] = "Продукти";
 }
@@ -16,23 +16,24 @@
     <br/>
     <div class="col-lg-6">
       
-            <form action="" method="get">
-                
-           
-                <div class="input-group">
-            <input type="text" name="search" class="form-control" value="@ViewBag.query">
-            <span class="input-group-btn">
+        <form action="" method="get">
+
+
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" value="@ViewBag.query">
+                <span class="input-group-btn">
                 <input type="submit" class="btn btn-secondary" value="Търси">
-                
-            </span>
-            </form> 
-        </div>
+                </span>
+            </div>
+           
+        </form> 
+        
     </div>
     <br/>
     @if (User.IsInRole("Administrator"))
                      { 
     
-                         <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Create" class="text-success">Добави продукт</a>
+                         <a asp-area="Admin" asp-controller="Products" asp-action="Create" class="text-success">Добави продукт</a>
     
                      }
 </center>
@@ -64,26 +65,5 @@
         </div>
     }
     
-    @if (Model.TotalProducts > Model.Products.Count())
-    {
-        <ul class="pagination">
-            <li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
-                <a
-                    asp-route-page="@Model.PreviousPage"
-                    aria-label="Previous"
-                >
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
-                <a 
-                    asp-route-page="@Model.NextPage"
-                    aria-label="Next"
-                >
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    }
 
 </div>

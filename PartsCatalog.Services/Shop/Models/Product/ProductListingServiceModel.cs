@@ -1,11 +1,7 @@
-﻿
-
-
-
-namespace PartsCatalog.Services.Shop.Models
+﻿namespace PartsCatalog.Services.Shop.Models.Product
 {
 
-    using PartsCatalog.Data.Models;
+    using Data.Models;
     using AutoMapper;
     using Common.Mapping;
    

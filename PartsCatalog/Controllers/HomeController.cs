@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PartsCatalog.Data;
-using PartsCatalog.Models;
-using PartsCatalog.Services.Shop;
-
-namespace PartsCatalog.Controllers
+﻿namespace PartsCatalog.Controllers
 {
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Services.Shop;
     public class HomeController : Controller
     {
         private readonly IProductService _products;

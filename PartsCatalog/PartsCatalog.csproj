@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Category\" />
+    <Folder Include="Areas\Admin\Views\Categories\" />
     <Folder Include="Areas\Shop\Data\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>

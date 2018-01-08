@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsCatalog", "PartsCatalog\PartsCatalog.csproj", "{0FEC6138-0BE5-4C2E-ADD5-7EE6BBF6B112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartsCatalog", "PartsCatalog\PartsCatalog.csproj", "{0FEC6138-0BE5-4C2E-ADD5-7EE6BBF6B112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsCatalog.Data", "PartsCatalog.Data\PartsCatalog.Data.csproj", "{E36AE355-18FF-43B0-A40E-15170535F7F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartsCatalog.Data", "PartsCatalog.Data\PartsCatalog.Data.csproj", "{E36AE355-18FF-43B0-A40E-15170535F7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsCatalog.Services", "PartsCatalog.Services\PartsCatalog.Services.csproj", "{EDB8E783-6BD5-402E-BBC4-59719A030AFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartsCatalog.Services", "PartsCatalog.Services\PartsCatalog.Services.csproj", "{EDB8E783-6BD5-402E-BBC4-59719A030AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartsCatalog.Common", "PartsCatalog.Common\PartsCatalog.Common.csproj", "{85860E4D-CBA2-44E8-8CBC-86BD0B32D1E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartsCatalog.Common", "PartsCatalog.Common\PartsCatalog.Common.csproj", "{85860E4D-CBA2-44E8-8CBC-86BD0B32D1E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,4 @@
-﻿
-namespace PartsCatalog.Areas.Shop.Models
+﻿namespace PartsCatalog.Areas.Shop.Models
 {
     public class CartItemViewModel
     {

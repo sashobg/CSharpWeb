@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PartsCatalog.Services;
-using PartsCatalog.Services.Shop.Models;
-
-namespace PartsCatalog.Areas.Shop.Models
+﻿namespace PartsCatalog.Areas.Shop.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using Services;
+    using Services.Shop.Models.Product;
+
     public class ProductsListingViewModel
     {
         

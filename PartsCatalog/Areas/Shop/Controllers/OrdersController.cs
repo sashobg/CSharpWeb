@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PartsCatalog.Areas.Shop.Models;
-using PartsCatalog.Data.Models;
-using PartsCatalog.Infrastructure.Extensions;
-using PartsCatalog.Infrastructure.Filters;
-using PartsCatalog.Services;
-using PartsCatalog.Services.Models;
-using PartsCatalog.Services.Shop;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-
-
-namespace PartsCatalog.Areas.Shop.Controllers
+﻿namespace PartsCatalog.Areas.Shop.Controllers
 {
+
+    using System.Linq;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Data.Models;
+    using Infrastructure.Extensions;
+    using Infrastructure.Filters;
+    using Services.Shop;
+    using Services.Shop.Models.Cart;
+
     [Area("Shop")]
 
     public class OrdersController : Controller

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PartsCatalog.Areas.Shop.Models;
-using PartsCatalog.Data.Models;
-using PartsCatalog.Services.Shop;
-
-namespace PartsCatalog.Areas.Shop.Controllers
+﻿namespace PartsCatalog.Areas.Shop.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Data.Models;
+    using Services.Shop;
+
     [Area("Shop")]
     public class ProductsController : Controller
     {

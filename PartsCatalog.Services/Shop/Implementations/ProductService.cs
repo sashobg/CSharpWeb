@@ -1,16 +1,13 @@
-﻿using PartsCatalog.Services.Models;
-using PartsCatalog.Services.Shop.Models.Cart;
-
-namespace PartsCatalog.Services.Shop.Implementations
+﻿namespace PartsCatalog.Services.Shop.Implementations
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using Models;
     using Data.Models;
     using Data;
     using System.Linq;
     using AutoMapper.QueryableExtensions;
+    using Models.Product;
+    using Models.Cart;
 
     using static ServiceConstants;
 
@@ -46,8 +43,7 @@ namespace PartsCatalog.Services.Shop.Implementations
                         .Contains(searchText.ToLower()))
                         
                     .OrderBy(x => x.Title)
-                    .Skip((page - 1) * ShopProductsPageSize)
-                    .Take(ShopProductsPageSize)
+                  
                     .ProjectTo<ProductListingServiceModel>()
                     .ToList();
             }
@@ -57,8 +53,6 @@ namespace PartsCatalog.Services.Shop.Implementations
                 .Where(x => x.Title.ToLower()
                 .Contains(searchText.ToLower()))
                 .OrderBy(x => x.Title)
-                .Skip((page - 1) * ShopProductsPageSize)
-                .Take(ShopProductsPageSize)
                 .ProjectTo<ProductListingServiceModel>()
                 .ToList();
         }

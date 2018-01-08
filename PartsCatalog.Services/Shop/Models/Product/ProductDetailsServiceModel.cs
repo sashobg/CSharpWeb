@@ -1,4 +1,4 @@
-﻿namespace PartsCatalog.Services.Shop.Models
+﻿namespace PartsCatalog.Services.Shop.Models.Product
 {
     using AutoMapper;
     using Common.Mapping;

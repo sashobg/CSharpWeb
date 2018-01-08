@@ -1,8 +1,6 @@
-﻿
-using System;
-
-namespace PartsCatalog.Services.Shop.Models.Order
+﻿namespace PartsCatalog.Services.Shop.Models.Order
 {
+    using System;
     using AutoMapper;
     using Common.Mapping;
     using Data.Models;

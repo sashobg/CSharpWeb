@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper.QueryableExtensions;
-using PartsCatalog.Data;
-using PartsCatalog.Data.Models;
-using PartsCatalog.Services.Shop.Models.Category;
-
+﻿
 namespace PartsCatalog.Services.Shop.Implementations
 {
+   
+    using System.Collections.Generic;
+    using System.Linq;
+    using AutoMapper.QueryableExtensions;
+    using Data;
+    using Data.Models;
+    using Models.Category;
+
     public class CategoryService : ICategoryService
     {
         private readonly PartsCatalogDbContext db;

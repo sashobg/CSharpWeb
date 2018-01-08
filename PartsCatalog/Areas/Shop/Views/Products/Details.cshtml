@@ -1,7 +1,7 @@
 ﻿@model ProductDetailsServiceModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детайли";
 }
 
 <div class="row">
@@ -30,8 +30,8 @@
 @if (User.IsInRole("Administrator"))
 { 
     <br/>
-    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@Model.Id" class="text-danger">Изтрий продукт</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@Model.Id" class="text-danger">Изтрий продукт</a>
     <br/>
-    <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@Model.Id" class="text-warning">Редактирай продукт</a>
+    <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id" class="text-warning">Редактирай продукт</a>
     <br />
 }

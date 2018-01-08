@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using PartsCatalog.Services.Shop.Models.Category;
-
-namespace PartsCatalog.Services.Shop
+﻿namespace PartsCatalog.Services.Shop
 {
+    using System.Collections.Generic;
+    using Models.Category;
+
     public interface ICategoryService
     {
         IEnumerable<CategoryListingServiceModel> All();

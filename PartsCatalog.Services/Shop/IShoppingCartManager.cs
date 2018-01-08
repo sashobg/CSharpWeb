@@ -1,7 +1,7 @@
-﻿namespace PartsCatalog.Services
+﻿namespace PartsCatalog.Services.Shop
 {
     using System.Collections.Generic;
-    using Models;
+    using Models.Cart;
 
     public interface IShoppingCartManager
     {

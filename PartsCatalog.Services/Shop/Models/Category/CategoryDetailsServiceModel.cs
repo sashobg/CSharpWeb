@@ -1,10 +1,9 @@
-﻿
-using AutoMapper;
-
-namespace PartsCatalog.Services.Shop.Models.Category
+﻿namespace PartsCatalog.Services.Shop.Models.Category
 {
-    using PartsCatalog.Common.Mapping;
+    using Common.Mapping;
     using Data.Models;
+    using AutoMapper;
+
     public class CategoryDetailsServiceModel : IMapFrom<Category>,  ICustomMapper
     {
         public int Id { get; set; }

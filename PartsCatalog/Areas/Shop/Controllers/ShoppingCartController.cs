@@ -1,23 +1,13 @@
-﻿
-
-namespace PartsCatalog.Areas.Shop.Controllers
+﻿namespace PartsCatalog.Areas.Shop.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Services;
     using Infrastructure.Extensions;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
-    using PartsCatalog.Areas.Shop.Models;
-    using PartsCatalog.Data;
-    using PartsCatalog.Data.Models;
-    using PartsCatalog.Services.Models;
-    using PartsCatalog.Services.Shop;
-    using PartsCatalog.Services.Shop.Models.Cart;
+    using Models;
+    using Data;
+    using Data.Models;
+    using Services.Shop;
 
     [Area("Shop")]
     public class ShoppingCartController : Controller

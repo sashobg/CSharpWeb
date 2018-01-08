@@ -1,4 +1,4 @@
-﻿namespace PartsCatalog.Services.Models
+﻿namespace PartsCatalog.Services.Shop.Models.Cart
 {
     public class CartItem
     {
