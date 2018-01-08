@@ -64,6 +64,7 @@
             var items = this.shoppingCartManager.GetItems(shoppingCartId);
             if (!items.Any())
             {
+                TempData.AddErrorMessage("За да направите покупка, първо добавете продукти в количката.");
                 return RedirectToAction("Items", nameof(ShoppingCart));
 
             }
@@ -72,8 +73,9 @@
             this.orders.Create(model.Address, model.Comment, items, userId);
 
             shoppingCartManager.Clear(shoppingCartId);
-           TempData["SuccessMessage"] = "Успешна покупка";
-            return RedirectToAction("Items", nameof(ShoppingCart));
+            TempData.AddSuccessMessage("Успешна покупка.");
+
+            return RedirectToAction("List");
         }
         [Authorize]
         public IActionResult Details(int id)
@@ -103,19 +105,21 @@
                 if (order.OrderStatus == OrderStatus.Pending)
                 {
                     this.orders.UpdateStatus(order.Id, (int) OrderStatus.Cancelled);
-                    TempData["Success"] = "Успешно отказахте поръчката.";
-                    return RedirectToAction("Items", nameof(ShoppingCart));
+                    TempData.AddSuccessMessage("Успешно отказахте поръчката.");
+
+
+                    return RedirectToAction("List");
 
                 }
                 else
                 {
-                    TempData["Warning"] = "Поръчката не може да бъде отказана.";
-                    return RedirectToAction("Items", nameof(ShoppingCart));
+                    TempData.AddErrorMessage("Поръчката не може да бъде отказана.");
+                    return RedirectToAction("List");
                 }
             }
+            TempData.AddErrorMessage("Няма такава поръчка.");
 
-            TempData["Danger"] = "Няма такава поръчка.";
-            return RedirectToAction("Items", nameof(ShoppingCart));
+            return RedirectToAction("List");
         }
     }
 

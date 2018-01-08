@@ -18,6 +18,6 @@
         bool Update(int id, string title);
 
         bool Delete(int id);
-
+        bool HasProducts(int id);
     }
 }

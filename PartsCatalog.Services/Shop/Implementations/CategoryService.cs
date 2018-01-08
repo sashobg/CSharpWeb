@@ -90,6 +90,9 @@ namespace PartsCatalog.Services.Shop.Implementations
             return true;
         }
 
+        public bool HasProducts(int id)
+            => this.db.Products.Any(p => p.CategoryId == id);
 
+    
     }
 }

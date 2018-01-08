@@ -47,7 +47,6 @@
                 .ToList();
 
             itemsWithDetails.ForEach(i => i.Quantity = itemQuatities[i.ProductId]);
-
             return View(itemsWithDetails);
         }
 
@@ -57,6 +56,7 @@
 
            
             this.shoppingCartManager.AddToCart(shoppingCartId, id, 1); // set quantity 1 
+            TempData.AddSuccessMessage("Добавихте продукт в количката.");
 
             return RedirectToAction(nameof(Items));
         }

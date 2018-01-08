@@ -1,4 +1,5 @@
-﻿namespace PartsCatalog.Data.Models
+﻿
+namespace PartsCatalog.Data.Models
 {
     public enum OrderStatus
     {

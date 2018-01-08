@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PartsCatalog.Data.Models
+﻿namespace PartsCatalog.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using static DataConstants;
     public class Order
     {
         public int Id { get; set; }
@@ -15,8 +15,12 @@ namespace PartsCatalog.Data.Models
 
         public decimal TotalPrice { get; set; }
 
+        [Required]
+        [MinLength(OrderAddressMinLength)]
+        [MaxLength(OrderAddressMaxLength)]
         public string Address { get; set; }
 
+        [MaxLength(OrderCommentMaxLength)]
         public string Comment { get; set; }
 
         public DateTime Date { get; set; }

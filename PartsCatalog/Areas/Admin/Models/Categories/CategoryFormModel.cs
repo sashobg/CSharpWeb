@@ -1,19 +1,18 @@
-﻿namespace PartsCatalog.Data.Models
+﻿
+namespace PartsCatalog.Areas.Admin.Models.Categories
 {
-   
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using static DataConstants;
-    public class Category
+    using static Data.DataConstants;
+
+    public class CategoryFormModel
     {
+        [Display(Name = "Номер")]
         public int Id { get; set; }
 
         [Required]
         [MinLength(CategoryNameMinLength)]
         [MaxLength(CategoryNameMaxLength)]
+        [Display(Name = "Име")]
         public string Name { get; set; }
-
-        public List<Product> Products { get; set; } = new List<Product>();
-       
     }
 }
